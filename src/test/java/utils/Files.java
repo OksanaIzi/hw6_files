@@ -1,5 +1,6 @@
 package utils;
 
+import com.codeborne.pdftest.PDF;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -17,6 +18,10 @@ public class Files {
 
     public static File getFile(String path) {
         return new File(path);
+    }
+
+    public static PDF getPdf(String path) throws IOException {
+        return new PDF(getFile(path));
     }
 
 }
