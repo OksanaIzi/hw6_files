@@ -34,14 +34,12 @@ public class ZipFileTests {
 
     @Test
     void zipTest() throws IOException, ZipException {
-        String zipFilePath = "./src/test/resources/files/1.zip";
-        String unzipFolderPath = "./src/test/resources/files/unzip";
-        String unzipTxtFilePath = "./src/test/resources/files/unzip/1.txt";
+        String zipFilePath = "./src/test/resources/files/2.zip";
+        String unzipFolderPath = "./src/test/resources/files/unzip1";
+        String unzipTxtFilePath = "./src/test/resources/files/unzip1/1.txt";
         String expectedData = "6 lesson files";
-        String zipPassword = "1";
 
-
-        unzip(zipFilePath, unzipFolderPath, zipPassword);
+        unzip(zipFilePath, unzipFolderPath);
 
         String actualData = readTextFromPath(unzipTxtFilePath);
 
