@@ -8,9 +8,12 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
@@ -36,7 +39,7 @@ public class Files {
         return new XLS(getFile(path));
     }
 
-    public static String readXlsxFromPath(String path){
+    public static String readXlsxFromPath(String path) {
         String result = "";
         XSSFWorkbook myExcelBook = null;
 
@@ -81,5 +84,12 @@ public class Files {
         }
 
         return result;
+    }
+
+    public static String readTextFromDocxFile(String path) throws IOException {
+        FileInputStream fis = new FileInputStream(path);
+        XWPFDocument doc = new XWPFDocument(fis);
+        XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
+        return extractor.getText();
     }
 }
